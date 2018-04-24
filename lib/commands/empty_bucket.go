@@ -11,6 +11,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+// EmptyBucketCommand represents the options that can be passed to the empty-bucket subcommand.
 type EmptyBucketCommand struct {
 	Bucket string `short:"b" long:"bucket" value-name:"bucket" description:"the bucket to empty" required:"true"`
 }
@@ -25,6 +26,7 @@ func init() {
 	)
 }
 
+// Execute implements the interface for the go-flags subcommand.
 func (cmd *EmptyBucketCommand) Execute(args []string) error {
 	fmt.Fprintf(os.Stdout, "Deleting contents of s3://%s\n", cmd.Bucket)
 

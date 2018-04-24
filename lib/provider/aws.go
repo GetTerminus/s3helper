@@ -8,6 +8,7 @@ import (
 	"github.com/pkg/errors"
 )
 
+// AWSSession returns an authenticated AWS session, used to make API calls.
 func AWSSession() (*session.Session, error) {
 	// Get credentials
 	var creds *credentials.Credentials
