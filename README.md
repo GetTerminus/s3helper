@@ -19,7 +19,7 @@ Compiling
 2. [Install golang/dep](https://github.com/golang/dep): `go get -u github.com/golang/dep/cmd/dep`
 3. Clone this repository to your GOPATH: `go get github.com/GetTerminus/s3helper`
 4. Run `dep ensure` from the repo's root dir to install the necessary dependencies
-5. Run `go build` to build the source code
+5. Run `go build` to create the executable
 
 Troubleshooting
 ---
