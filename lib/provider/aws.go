@@ -10,9 +10,13 @@ import (
 
 func AWSSession() (*session.Session, error) {
 	// Get credentials
-	// creds := credentials.NewStaticCredentials("id", "secret", "token")
-	creds := credentials.NewSharedCredentials("", parser.GlobalOpts.Profile)
-	// creds := credentials.NewEnvCredentials()
+	var creds *credentials.Credentials
+
+	if parser.GlobalOpts.Profile != "" {
+		creds = credentials.NewSharedCredentials("", parser.GlobalOpts.Profile)
+	} else {
+		creds = credentials.NewEnvCredentials()
+	}
 
 	sessionHandle, err := session.NewSession(&aws.Config{
 		Region:      aws.String(parser.GlobalOpts.Region),
