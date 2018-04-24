@@ -66,8 +66,8 @@ func (cmd *EmptyBucketCommand) Execute(args []string) error {
 
 		for i, obj := range resp.Versions {
 			objectIdentifiers[i] = &s3.ObjectIdentifier{
-				Key:       aws.String(*obj.Key),
-				VersionId: aws.String(*obj.VersionId),
+				Key:       obj.Key,
+				VersionId: obj.VersionId,
 			}
 		}
 
