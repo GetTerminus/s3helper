@@ -78,11 +78,9 @@ func (cmd *EmptyBucketCommand) Execute(args []string) error {
 
 		items.SetObjects(objectIdentifiers)
 
-		if parser.GlobalOpts.Verbose[0] {
-			fmt.Fprintf(os.Stdout, "Deleting %v objects\n", numObjects)
-		}
+		fmt.Fprintf(os.Stdout, "Deleting %v objects\n", numObjects)
 
-		if len(parser.GlobalOpts.Verbose) >= 2 {
+		if parser.GlobalOpts.Verbose {
 			fmt.Fprintln(os.Stdout, items)
 		}
 
