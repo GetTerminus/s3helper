@@ -5,7 +5,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: golang:1.10.1
+      - image: golang:1.10.1-alpine3.7
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
