@@ -1,4 +1,4 @@
-# S3 Helper
+# S3 Helper [![CircleCI](https://circleci.com/gh/GetTerminus/s3helper.svg?style=svg)](https://circleci.com/gh/GetTerminus/s3helper)
 s3helper is a CLI tool designed for random 1 off commands for use cases that are slightly more complex than what the AWS CLI handles
 
 Installation
