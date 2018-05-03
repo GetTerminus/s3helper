@@ -1,6 +1,5 @@
 # Package information
 PACKAGE   = s3helper
-VERSION   = $(shell $(SEMANTICS) --dry-run --output-tag)
 PLATFORMS = linux darwin
 os        = $(word 1, $@)
 
