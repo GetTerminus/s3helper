@@ -18,6 +18,8 @@ type EmptyBucketCommand struct {
 
 func init() {
 	var cmd EmptyBucketCommand
+
+	// nolint [:errcheck]
 	parser.OptParser.AddCommand(
 		"empty-bucket",
 		"Erase all contents in an s3 bucket",
@@ -28,6 +30,8 @@ func init() {
 
 // Execute implements the interface for the go-flags subcommand.
 func (cmd *EmptyBucketCommand) Execute(args []string) error {
+
+	// nolint [:gas]
 	fmt.Fprintf(os.Stdout, "Deleting contents of s3://%s\n", cmd.Bucket)
 
 	// Create a session and get an s3 handle
@@ -56,6 +60,8 @@ func (cmd *EmptyBucketCommand) Execute(args []string) error {
 
 		// delete things until there's nothing left
 		if numObjects == 0 {
+
+			// nolint [:gas]
 			fmt.Fprintf(os.Stdout, "Total number of objects deleted: %v\n", totalDeleted)
 			return nil
 		}
@@ -80,9 +86,12 @@ func (cmd *EmptyBucketCommand) Execute(args []string) error {
 
 		items.SetObjects(objectIdentifiers)
 
+		// nolint [:gas]
 		fmt.Fprintf(os.Stdout, "Deleting %v objects\n", numObjects)
 
 		if parser.GlobalOpts.Verbose {
+
+			// nolint [:gas]
 			fmt.Fprintln(os.Stdout, items)
 		}
 
