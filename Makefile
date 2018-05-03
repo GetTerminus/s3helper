@@ -19,8 +19,10 @@ export GOPATH
 GO ?= go
 
 M = $(shell printf "\033[34;1m▶\033[0m")
-Q = $(if $(filter 1,$V),,@)
-V ?= 0
+
+# Print commands if VERBOSE env var is set
+# VERBOSE ?= 0
+Q := $(if $(VERBOSE),,@)
 
 # Create releases for osx and linux
 .PHONY: build

@@ -12,3 +12,5 @@ jobs:
       - run: make clean
       - run: make lint
       - run: make
+    environment:
+      VERBOSE: "true"
