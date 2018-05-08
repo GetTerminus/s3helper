@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	_ "github.com/GetTerminus/s3helper/lib/commands"
+	_ "github.com/GetTerminus/s3helper/commands"
 	"github.com/GetTerminus/s3helper/lib/parser"
 )
 
