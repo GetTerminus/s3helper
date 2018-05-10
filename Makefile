@@ -51,7 +51,7 @@ $(BIN)/gometalinter: REPOSITORY=github.com/alecthomas/gometalinter
 
 .PHONEY: test
 test: $(BASE); $(info $(M) running test…)
-	$Q cd $(BASE) && $(GO) test -v ./...
+	$Q cd $(BASE) && $(GO) test -v ./... -cover
 
 .PHONEY: lint
 lint: $(GOMETALINTER) | $(BASE); $(info $(M) running gometalinter…)
