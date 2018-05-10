@@ -10,18 +10,18 @@ import (
 )
 
 type client struct {
-	awsSession     *session.Session
-	awsSessionOnce sync.Once
+	sess *session.Session
+	once sync.Once
 }
 
 // Session returns an authenticated AWS session, used to make API calls.
-func (c *client) Session() *session.Session {
+func (c *client) GetSession() *session.Session {
 
 	// Only ever create one session
-	c.awsSessionOnce.Do(func() {
+	c.once.Do(func() {
 		// Create a session, session.Must should handle any errors
 		// https://docs.aws.amazon.com/sdk-for-go/api/aws/session/#Must
-		c.awsSession = session.Must(
+		c.sess = session.Must(
 			session.NewSession(
 				&aws.Config{
 					Region:      aws.String(parser.GlobalOpts.Region),
@@ -31,7 +31,7 @@ func (c *client) Session() *session.Session {
 		)
 	})
 
-	return c.awsSession
+	return c.sess
 }
 
 func processCredentials(profile string) *credentials.Credentials {
