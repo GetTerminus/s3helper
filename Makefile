@@ -10,7 +10,6 @@ GITHUB_ORG = GetTerminus
 GOPATH = $(shell go env GOPATH)
 BIN    = $(GOPATH)/bin
 BASE   = $(GOPATH)/src/github.com/$(GITHUB_ORG)/$(PACKAGE)
-PKGS   = $(shell cd $(BASE) && env GOPATH=$(GOPATH) $(GO) list ./... | grep -v /vendor)
 
 export GOPATH
 
@@ -49,6 +48,10 @@ GOMETALINTER = $(BIN)/gometalinter
 $(BIN)/gometalinter: REPOSITORY=github.com/alecthomas/gometalinter
 
 # Useful commands
+
+.PHONEY: test
+test: $(BASE); $(info $(M) running test…)
+	$Q cd $(BASE) && $(GO) test -v ./...
 
 .PHONEY: lint
 lint: $(GOMETALINTER) | $(BASE); $(info $(M) running gometalinter…)
