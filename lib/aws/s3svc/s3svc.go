@@ -5,11 +5,13 @@ import (
 	"github.com/pkg/errors"
 )
 
+// API represents a subset of the s3iface.
 type API interface {
 	DeleteObjects(*s3.DeleteObjectsInput) (*s3.DeleteObjectsOutput, error)
 	ListObjectVersions(*s3.ListObjectVersionsInput) (*s3.ListObjectVersionsOutput, error)
 }
 
+// Client provides a wrapper for s3api calls.
 type Client struct {
 	s3api   API
 	verbose bool
