@@ -48,7 +48,7 @@ GOMETALINTER = $(BIN)/gometalinter
 $(BIN)/gometalinter: REPOSITORY=github.com/alecthomas/gometalinter
 
 GINKGO = $(BIN)/ginkgo
-$(BIN)/ginkgo: REPOSITORY=github.com/onsi/ginkgo
+$(BIN)/ginkgo: REPOSITORY=github.com/onsi/ginkgo/ginkgo
 
 # Useful commands
 
