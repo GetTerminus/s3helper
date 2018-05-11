@@ -42,7 +42,11 @@ func (cmd *EmptyBucketCommand) Execute(args []string) error {
 		return errors.Wrap(err, "Package: commands => func: Execute => method call s3svc.Client.DeleteBucketContents failed\n")
 	}
 
-	fmt.Println(resp)
+	if parser.GlobalOpts.Verbose {
+
+		// nolint [:gas]
+		fmt.Fprintln(os.Stdout, resp)
+	}
 
 	return nil
 }
