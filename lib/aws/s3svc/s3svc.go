@@ -27,7 +27,9 @@ func NewClient(s3 API, v bool) *Client {
 
 // DeleteBucketContents will remove all object versions and delete markers from the specified s3 bucket.
 func (c *Client) DeleteBucketContents(bucket string) ([]*s3.DeletedObject, error) {
-	deletedObjects := make([]*s3.DeletedObject, 0)
+
+	// gonna fill this with items that were deleted by using append()
+	deletedObjects := []*s3.DeletedObject{}
 
 	for {
 		// 2 API calls are needed to delete things in s3, the first will get a list
