@@ -47,11 +47,14 @@ $(BIN)/%: $(BIN)
 GOMETALINTER = $(BIN)/gometalinter
 $(BIN)/gometalinter: REPOSITORY=github.com/alecthomas/gometalinter
 
+GINKGO = $(BIN)/ginkgo
+$(BIN)/ginkgo: REPOSITORY=github.com/onsi/ginkgo
+
 # Useful commands
 
 .PHONEY: test
-test: $(BASE); $(info $(M) running test…)
-	$Q cd $(BASE) && $(GO) test -v ./... -cover
+test: $(GINKGO) | $(BASE); $(info $(M) running test…)
+	$Q cd $(BASE) && ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress
 
 .PHONEY: lint
 lint: $(GOMETALINTER) | $(BASE); $(info $(M) running gometalinter…)
