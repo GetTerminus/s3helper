@@ -223,6 +223,8 @@ var _ = Describe("S3svc", func() {
 					},
 				}
 
+				deleteObjectsOutputError = nil
+
 				expectedResp = []*s3.DeletedObject{
 					&s3.DeletedObject{
 						Key:       aws.String("key"),
