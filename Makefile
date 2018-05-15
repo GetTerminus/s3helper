@@ -10,7 +10,6 @@ GITHUB_ORG = GetTerminus
 GOPATH = $(shell go env GOPATH)
 BIN    = $(GOPATH)/bin
 BASE   = $(GOPATH)/src/github.com/$(GITHUB_ORG)/$(PACKAGE)
-PKGS   = $(shell cd $(BASE) && env GOPATH=$(GOPATH) $(GO) list ./... | grep -v /vendor)
 
 export GOPATH
 
@@ -48,7 +47,14 @@ $(BIN)/%: $(BIN)
 GOMETALINTER = $(BIN)/gometalinter
 $(BIN)/gometalinter: REPOSITORY=github.com/alecthomas/gometalinter
 
+GINKGO = $(BIN)/ginkgo
+$(BIN)/ginkgo: REPOSITORY=github.com/onsi/ginkgo/ginkgo
+
 # Useful commands
+
+.PHONEY: test
+test: $(GINKGO) | $(BASE); $(info $(M) running test…)
+	$Q cd $(BASE) && ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress
 
 .PHONEY: lint
 lint: $(GOMETALINTER) | $(BASE); $(info $(M) running gometalinter…)
