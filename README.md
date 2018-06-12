@@ -1,4 +1,5 @@
 # S3 Helper [![CircleCI](https://circleci.com/gh/GetTerminus/s3helper.svg?style=svg)](https://circleci.com/gh/GetTerminus/s3helper)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FGetTerminus%2Fs3helper.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FGetTerminus%2Fs3helper?ref=badge_shield)
 s3helper is a CLI tool designed for random 1 off commands for use cases that are slightly more complex than what the AWS CLI handles
 
 Installation
@@ -27,3 +28,7 @@ If you encounter problems using `go get` to download a package over ssh, it may 
 ```
 git config --global url."git@github.com".insteadOf "https://github.com/"
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FGetTerminus%2Fs3helper.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FGetTerminus%2Fs3helper?ref=badge_large)
